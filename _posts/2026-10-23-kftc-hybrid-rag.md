@@ -1,12 +1,12 @@
 ---
-title: "공정위 의결서 하이브리드 RAG: 오프라인 A100에서 63.79점을 받기까지"
+title: "공정위 의결서 하이브리드 RAG: BM25·BGE-M3 융합부터 제목 앵커링까지"
 date: 2026-10-23 10:40:00 +0900
 categories: [AI, RAG]
 tags: [rag, bm25, bge-m3, rrf, reranker, exaone, lora, kiwipiepy, qdrant, fastapi]
 math: true
 image:
-  path: /assets/img/posts/kftc-hybrid-rag/official-score-light.png
-  alt: 2차 제출 공식 점수 항목별 득점
+  path: /assets/img/posts/kftc-hybrid-rag/retrieval-ablation-light.png
+  alt: 단독 검색과 하이브리드의 Recall@5 비교
 ---
 
 공정거래위원회 의결서 500건을 대상으로 질문을 받으면 근거 청크 5개와 답변을 돌려주는 RAG 시스템을 만들었다. 제2회 공정위 AI·데이터 활용 공모전에 팀 Retriever로 출전했고, 본선에 진출해 최종 1~3위로 수상했다.
@@ -16,7 +16,7 @@ image:
 | 코퍼스 | 의결서 500건, 청크 31,879개 (정제·필터 후 27,076개) |
 | 검색 | BM25(kiwipiepy) + BGE-M3 dense, RRF(k=60), Cross-encoder 리랭커, 제목 앵커링 |
 | 생성 | 유형별 결정적 조립 (LLM은 폴백), EXAONE-3.5-2.4B + LoRA SFT |
-| 공식 최고점 | 63.79 / 100 (2차 제출) |
+| 결과 | 본선 진출, 최종 1~3위 수상 |
 | 자체 검색 (사람 GT 35문항) | R@5 / MRR 0.971 / 0.957 → 1.000 / 1.000 (제목 앵커링, 질문에 제목이 포함된 셋) |
 | 자체 생성 (정답 청크 제공) | mBERT 0.786 → 0.861 |
 | 응답 시간 | LLM 생성 41.9초 → 결정적 생성 1.4초 |
@@ -528,13 +528,13 @@ def mrr(retrieved: list[str], relevant: list[str]) -> float:
 
 자체 R@5 0.97과 공식 0.87의 차이는 자체 평가셋이 공식보다 쉬운 탓이 크다. 문서 단위 매칭은 정답 문서의 다른 청크도 맞은 것으로 쳐서 차이의 한 원인이 될 수 있다.
 
-## 8. 63.79는 무엇인가
+## 8. 공식 채점에서 배운 것
 
 ![2차 제출 공식 점수 항목별 득점](/assets/img/posts/kftc-hybrid-rag/official-score-light.png){: .light }
 ![2차 제출 공식 점수 항목별 득점](/assets/img/posts/kftc-hybrid-rag/official-score-dark.png){: .dark }
 _괄호는 만점 대비 비율_
 
-63.79는 대회 운영팀이 비공개 질문·정답으로 잰 2차 제출본의 총점이다. 가중치 변경 후 식이라 항목별 만점이 35, 15, 45, 5다.
+공식 점수는 대회 운영팀이 비공개 질문·정답으로 잰 값이다. 가중치 변경 후 식이라 항목별 만점이 35, 15, 45, 5다.
 
 | 항목 | 만점 | 1차 | 2차 | 2차 비율 |
 |---|---|---|---|---|
