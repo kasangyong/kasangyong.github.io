@@ -24,6 +24,8 @@ image:
 
 결과 파일이 저장소에 없어서 아래에 나오는 수익률 이야기는 전부 `work_log.md`에 적힌 문장에 기댄다. 백테스트 출력은 콘솔에만 찍혔고 커밋하지 않았다.
 
+{% include embed/video.html src='/assets/img/posts/binance-backtest/explainer.mp4' poster='/assets/img/posts/binance-backtest/explainer-poster.jpg' title='신호가 난 봉의 종가에 들어가 다음 봉부터 SL을 먼저, TP를 나중에 보고 청산한 뒤 잔고를 갱신하는 백테스트 엔진의 한 바퀴' loop=true %}
+
 ## 1. 저장소 두 개의 관계
 
 | 저장소 | 시기 | 내용 |

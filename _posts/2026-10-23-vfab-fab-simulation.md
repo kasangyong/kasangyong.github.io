@@ -21,6 +21,8 @@ image:
 | 실행 비용 | 단독 실행은 HVLM 1년, 코어 하나로 약 9분(README). 로드맵은 시뮬레이션 한 번을 20~30분으로 잡았다 |
 | 검증 | pytest 1,524개 통과, ruff·mypy 0건 (2026-10-07 기준) |
 
+{% include embed/video.html src='/assets/img/posts/vfab-fab-simulation/explainer.mp4' poster='/assets/img/posts/vfab-fab-simulation/explainer-poster.jpg' title='첫 PM을 장비들에 한꺼번에 주느냐 나눠 주느냐가 두 엔진의 사이클타임 차이를 만든다. 장비 4대 레인은 예시' loop=true %}
+
 ## 1. 무엇을 시뮬레이션하고 무엇을 안 했나
 
 VFAB는 혼자 만든 반도체 제조 데이터 분석 프로젝트다. 모듈은 FDC 이상감지(SECOM), 웨이퍼맵 분류(WM-811K), OEE 추정(KAMP), 팹 구조 분석(M3-B), DES 시뮬레이션(M4) 다섯 개이고, 여기에 선택 모듈인 공구 마모 판별(KAMP CNC)이 붙는다.

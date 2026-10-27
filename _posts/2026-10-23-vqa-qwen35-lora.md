@@ -23,6 +23,8 @@ image:
 
 저장소에는 개인별 분담 기록이 없어서 아래 실험은 팀 단위로 적는다.
 
+{% include embed/video.html src='/assets/img/posts/vqa-qwen35-lora/explainer.mp4' poster='/assets/img/posts/vqa-qwen35-lora/explainer-poster.jpg' title='예시 문항 하나를 선지 순서 5가지로 다섯 번 묻고, 원래 글자로 되돌린 다수결로 답을 정하는 추론 경로' loop=true %}
+
 ## 1. 문제와 데이터
 
 입력은 이미지 한 장과 한국어 질문, 선지 a~d이고 출력은 소문자 한 글자다. 평가 지표는 정확도다.

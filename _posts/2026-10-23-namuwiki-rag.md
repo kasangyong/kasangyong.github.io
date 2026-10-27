@@ -22,6 +22,8 @@ image:
 | 질의 1회 | 3.1초 (하이브리드 검색, RRF, 리랭킹) |
 | 자동 검증 | 20항목 통과, 경고 0, 실패 0 |
 
+{% include embed/video.html src='/assets/img/posts/namuwiki-rag/explainer.mp4' poster='/assets/img/posts/namuwiki-rag/explainer-poster.jpg' title='문서 하나가 프런티어에서 Kafka 토픽, 크롤링, 섹션 청킹, dense·sparse 임베딩을 지나 하이브리드 검색 결과로 돌아오는 흐름' loop=true %}
+
 ## 1. 만들기 전에 잰 것들
 
 설계 문서보다 대상 크기를 먼저 쟀다. `나무위키:통계` 페이지를 보면 문서 이름공간은 리다이렉트를 포함해 1,894,043개이고, 나무위키가 공시한 리다이렉트 비율이 34.43%이니 실질 콘텐츠 문서는 약 124만 개가 된다. 분류는 232,870개, 틀은 103,689개였다.

@@ -20,6 +20,8 @@ image:
 | Round 1 응답 시간 | 193.3초 (실행 예시 1회) |
 | 코드 | 파이썬 402줄, 외부 의존성 `google-genai` 1개 |
 
+{% include embed/video.html src='/assets/img/posts/multi-agent/explainer.mp4' poster='/assets/img/posts/multi-agent/explainer-poster.jpg' title='과제 하나가 에이전트 6개를 거쳐 공유 메모리에 쌓이고, 빌드 검증 에러가 Round 3로 넘어간 뒤 파일로 기록되는 흐름' loop=true %}
+
 ## 1. 구조: 역할 6개, 파일을 쓰는 건 3개
 
 ![파이프라인 구조도](/assets/img/posts/multi-agent/pipeline-light.png){: .light }

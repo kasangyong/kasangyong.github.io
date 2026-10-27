@@ -25,6 +25,8 @@ image:
 ![실시간 뷰어](/assets/img/posts/evolution-sim/viewer.png)
 _seed 3, tick 425,400. 왼쪽이 대륙붕, 가운데 해산 꼭대기와 해저의 주황 점이 열수구다_
 
+{% include embed/video.html src='/assets/img/posts/evolution-sim/explainer.mp4' poster='/assets/img/posts/evolution-sim/explainer-poster.jpg' title='ΔG로 번 에너지에서 유지비를 내고, 모자라면 죽고 남으면 분열하는 규칙만으로 수소 화학합성 효율이 0.5에서 0.941~0.943으로 올라간 과정. 세포 그림과 분포 이동은 예시' loop=true %}
+
 ## 1. 세계: 격자 위의 장, 그 위의 입자
 
 설계 단계에서 세 가지를 놓고 골랐다. 칸 하나가 생물 하나인 셀룰러 오토마타는 뇌나 몸 크기를 담기 어렵고, Lenia 같은 연속장은 유전체와 종 개념이 흐려서 계통수를 그리기 어렵다. 그래서 환경(화학, 빛, 온도)은 격자장으로, 생물은 위치와 유전체를 가진 입자로 두는 하이브리드를 택했다.

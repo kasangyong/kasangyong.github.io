@@ -20,6 +20,8 @@ Chrome DevTools Protocol(CDP)로 트레이스를 떠서 렌더링 성능에 관�
 | 환경 | Chrome 152.0.7977.83 (headless=new, GPU 가속), Windows 11 |
 | 의존성 | Node 22 내장 `WebSocket`만 사용, 0개 |
 
+{% include embed/video.html src='/assets/img/posts/browser-rendering-myths/explainer.mp4' poster='/assets/img/posts/browser-rendering-myths/explainer-poster.jpg' title='transform 애니메이션의 프레임 하나가 Layout과 Paint만 건너뛰고 Style, PrePaint, Commit은 매번 지나는 과정' loop=true %}
+
 ## 1. 프레임 시간 대신 이벤트를 세는 측정 장치
 
 ### 처음 고른 지표가 틀렸다

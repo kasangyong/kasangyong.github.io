@@ -23,6 +23,8 @@ image:
 | 스택 | TypeScript strict, Three.js r186, WebGL2, Web Audio, Vite 8 |
 | 코드 / 테스트 | `src` TypeScript 5,167줄, Vitest 20개, Playwright 스모크 3개 × 데스크톱·모바일 |
 
+{% include embed/video.html src='/assets/img/posts/interactive-media/explainer.mp4' poster='/assets/img/posts/interactive-media/explainer-poster.jpg' title='스크롤로 near 범위에 들어온 데모가 시작되고, 포인터 입력이 한 프레임의 패스를 지나 소용돌이가 되며, 멀어지면 pause와 unmount로 자원을 돌려주는 생명주기' loop=true %}
+
 ## 1. 데모 17개가 한 페이지에서 버티는 구조
 
 데모가 한꺼번에 돌면 GPU가 버티지 못한다. 브라우저는 WebGL 컨텍스트 수에 상한을 두고, 카메라·마이크·소리는 사용자 동작이 있어야 시작할 수 있다. 이걸 데모마다 따로 처리하는 대신 모든 데모가 메서드 세 개짜리 계약을 따르게 하고, 생명주기는 `DemoHost` 하나에 맡겼다.

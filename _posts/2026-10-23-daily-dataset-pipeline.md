@@ -26,6 +26,8 @@ image:
 ![소스 12개 × 날짜별 파티션 최종 상태](/assets/img/posts/daily-dataset-pipeline/status-grid-dark.png){: .dark }
 _연한 칸은 0행으로 성공한 파티션이고, 대부분 임상시험의 주말이다_
 
+{% include embed/video.html src='/assets/img/posts/daily-dataset-pipeline/explainer.mp4' poster='/assets/img/posts/daily-dataset-pipeline/explainer-poster.jpg' title='cron이 깨운 하루치 실행이 레지스트리, 수집 루틴과 검증, 구멍 복구, 종료 코드를 거쳐 커밋까지 가는 흐름' loop=true %}
+
 ## 1. 소스마다 성질이 다르다
 
 12개 소스는 다 같은 "하루치 데이터"처럼 보여도 성질이 제각각이다. 끝난 하루를 언제든 다시 알려주는 소스가 있는가 하면 지금 이 순간만 알려주는 소스도 있고, 어떤 피드는 11일치를 담는데 어떤 피드는 90분치뿐이다. 이 차이를 무시하면 에러 하나 없이 데이터가 틀어진다.

@@ -21,6 +21,8 @@ image:
 | 자체 생성 (정답 청크 제공) | mBERT 0.786 → 0.861 |
 | 응답 시간 | LLM 생성 41.9초 → 결정적 생성 1.4초 |
 
+{% include embed/video.html src='/assets/img/posts/kftc-hybrid-rag/explainer.mp4' poster='/assets/img/posts/kftc-hybrid-rag/explainer-poster.jpg' title='제목이 맞지 않는 질문 하나가 BM25·BGE-M3 병렬 검색, RRF 융합, 리랭커를 거쳐 근거 청크 5개와 결정적 답변이 되는 경로' loop=true %}
+
 ## 1. 문제와 제약
 
 질문 하나에 `retrieved_chunk_ids` 정확히 5개와 `answer` 하나를 돌려주는 `/predict` 엔드포인트를 Docker 이미지로 제출한다. 걸린 제약은 이렇다.

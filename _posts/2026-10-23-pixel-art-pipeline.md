@@ -20,6 +20,8 @@ image:
 | 린트 규칙 | 포맷·gutter ERROR + 도트 품질 WARN 8종 |
 | 회귀 테스트 | `test_pix.py` 전부 통과. 데모 스모크 18건, 게임 스모크 107건 × 2(연출 켬/끔), 렌더 민감도 6/6 |
 
+{% include embed/video.html src='/assets/img/posts/pixel-art-pipeline/explainer.mp4' poster='/assets/img/posts/pixel-art-pipeline/explainer-poster.jpg' title='.pixa 스프라이트 하나가 파서와 린터를 통과하고 빌드 리포트를 거쳐 PNG로 굽지 않은 채 게임 캔버스에 실리는 과정' loop=true %}
+
 ## 1. 왜 텍스트 격자인가
 
 LLM은 마우스를 쓰지 못하고 그리는 도중에 결과를 볼 수도 없어서, 그림을 그리게 하면 형태가 쉽게 무너진다. 스프라이트를 글자 격자로 두면 이 조건이 달라진다.

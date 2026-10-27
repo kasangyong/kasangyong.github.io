@@ -26,6 +26,8 @@ image:
 
 > 참조 동작: Open Motion Project, ACCAD, The Ohio State University (CC BY 3.0)
 
+{% include embed/video.html src='/assets/img/posts/boxing-humanoid-rl/explainer.mp4' poster='/assets/img/posts/boxing-humanoid-rl/explainer-poster.jpg' title='같은 두 오차 지점에서 지수의 인자만 제곱합에서 RMS로 바꾸자 훅 수준 오차의 보상이 0.007에서 0.28이 됐다' loop=true %}
+
 ## 1. 시뮬레이터: 환경 수가 보상보다 먼저였다
 
 물리는 MuJoCo의 GPU 구현인 mujoco-warp로 돌린다. 이 프로젝트 이전에 세 번 실패했는데, 매번 "계속 돌려도 나아지지 않는다"로 끝났다. 같은 서 있기 과제, 같은 보상, 같은 PPO 코드를 환경 수만 바꿔 돌려 보니 원인이 보였다.

@@ -21,6 +21,8 @@ image:
 | 벽시계 | 15.1일 (실제 계산 12.5일) |
 | 코드 / 테스트 | 5,119줄 / 3,481줄, 162항목 통과 |
 
+{% include embed/video.html src='/assets/img/posts/sangyong-llm/explainer.mp4' poster='/assets/img/posts/sangyong-llm/explainer-poster.jpg' title='캐시가 있는 상태에서 질의 여러 개를 넣으면 is_causal=True가 마스크를 왼쪽 위로 정렬해 에러 없이 틀린 값을 낸다. 그래서 이 경로를 막았다' loop=true %}
+
 ## 1. 무엇을 직접 만들고 무엇을 빌렸나
 
 연산 계층에서는 PyTorch의 텐서 연산, autograd, CUDA 런타임, 융합 어텐션 커널 `F.scaled_dot_product_attention` 네 가지를 빌렸고, 옵티마이저 `torch.optim.AdamW`와 `GradScaler`도 가져다 썼다.

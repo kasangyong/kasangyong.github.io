@@ -22,6 +22,8 @@ image:
 | 미해결로 선언한 것 | R1 이종 백엔드 검증(정직한 실행도 최대 42), R4 잡당 온체인 비용(정상 경로 중앙값 합 338,678 gas, 배치로 묶어도 약 3.3%만 준다) |
 | 기간 | 2026-08-24 설계 ~ 09-02, 커밋 83개 |
 
+{% include embed/video.html src='/assets/img/posts/sublet-gpu-marketplace/explainer.mp4' poster='/assets/img/posts/sublet-gpu-marketplace/explainer-poster.jpg' title='잡 하나가 에스크로 예치, 격리 추론, TOPLOC 지문과 서명된 증거, checker 판정, 어테스트를 거쳐 settle 정산까지 가는 과정. 어테스트는 지금 한 프로세스가 키를 모두 든다' loop=true %}
+
 ## 1. 주장하는 것과 주장하지 않는 것
 
 기존 GPU 임대 플랫폼은 정산 근거가 플랫폼의 집계뿐이다. 공급자는 왜 이 금액인지, 수요자는 그 작업이 정말 수행됐는지를 스스로 확인할 수 없다. Sublet은 이걸 푸는 게 목표지만 "무신뢰(trustless) 검증"이라고는 주장하지 않는다. 설계 문서에서 가장 중요하게 둔 절이 보장 목록과 미보장 목록이다.

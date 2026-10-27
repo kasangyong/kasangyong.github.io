@@ -21,6 +21,8 @@ JB금융그룹 Fin:AI Challenge(지정주제 1, 개인 라이프케어 AI)에 1�
 | 코드 | 백엔드 파이썬 6개 파일 706줄, 데모 단일 HTML 1,338줄 |
 | 기간 | 2026-06-29 ~ 07-05, 커밋 66개 |
 
+{% include embed/video.html src='/assets/img/posts/lifelong-guardian-fds/explainer.mp4' poster='/assets/img/posts/lifelong-guardian-fds/explainer-poster.jpg' title='김OO 시나리오(백엔드 켬)의 이체 한 건이 1층 룰, 2층 z-score 베이스라인, 3층 계좌평판을 지나 송금 보류와 ARS·지정인 알림까지 가는 과정' loop=true %}
+
 ## 1. 문제: 300만원은 위험한 금액인가
 
 고정 금액 룰은 "65세 이상이 100만원 넘게 보내면 경고" 같은 식이다. 그런데 매달 아들에게 생활비를 보내고 가끔 250만, 300만원도 보내던 어르신에게 300만원은 평소 거래다. 반대로 20만원대만 보내던 어르신이 처음 보는 '안전계좌'로 300만원을 보내면 금액보다 그 이탈 자체가 신호다.

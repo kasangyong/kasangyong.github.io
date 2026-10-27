@@ -21,6 +21,8 @@ image:
 | 답변 끝 훅 p95 | 571~605ms (같은 조건) |
 | 배포 | 공개 저장소 `ccx-dist`의 마켓플레이스, zip sha256 고정 |
 
+{% include embed/video.html src='/assets/img/posts/ccx-claude-code-sharing/explainer.mp4' poster='/assets/img/posts/ccx-claude-code-sharing/explainer-poster.jpg' title='Claude Code 턴 하나가 게이트를 통과해 카드가 되고, 서버를 거쳐 상대 Claude의 컨텍스트에 참고 데이터로 들어가는 과정' loop=true %}
+
 ## 1. 무엇을 보내고 무엇을 안 보내나
 
 공유하는 단위는 턴 하나다. 사용자가 한 번 질문하면 Claude가 그 질문을 처리하며 부른 도구들과 마지막 답변까지 묶어 카드 한 장이 된다.

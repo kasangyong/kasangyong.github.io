@@ -22,6 +22,8 @@ image:
 | 라우터 분류 정확도 | held-out 합산 32/39 (82.1%) |
 | 전략 비교에 필요한 문항 수 | 60~120 (채점 문항은 19개) |
 
+{% include embed/video.html src='/assets/img/posts/ontology-router/explainer.mp4' poster='/assets/img/posts/ontology-router/explainer-poster.jpg' title='W10 질문이 관계형으로 분류돼 local로 가고, 진입점 3개 절단 때문에 근거 청크가 후보에서 빠지는 과정' loop=true %}
+
 ## 1. 구성
 
 ![문서 코퍼스 그래프 탐색기](/assets/img/posts/ontology-router/ui-doc-overview.png)
