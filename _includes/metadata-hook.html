@@ -1,0 +1,49 @@
+<!--
+  Thumbnail video: when a post's image is `.../thumb-poster.jpg` and a sibling
+  `thumb.mp4` exists, the home card and the post header play that muted loop
+  instead of the still. The still stays as the poster, the og:image, and the
+  fallback for reduced motion or data saver.
+-->
+<style>
+  video.thumb-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  #post-list .card video.thumb-video { aspect-ratio: 40 / 21; }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const still = '/thumb-poster.jpg';
+    const imgs = [...document.querySelectorAll('img')].filter((img) =>
+      (img.getAttribute('src') || '').endsWith(still)
+    );
+    if (!imgs.length) return;
+
+    const conn = navigator.connection;
+    if (conn && conn.saveData) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const videos = imgs.map((img) => {
+      const src = img.getAttribute('src');
+      const v = document.createElement('video');
+      v.className = `${img.className} thumb-video`.trim();
+      v.poster = src;
+      v.muted = true;
+      v.loop = true;
+      v.playsInline = true;
+      v.preload = 'none';
+      v.setAttribute('aria-label', img.getAttribute('alt') || '');
+      v.src = src.slice(0, -still.length) + '/thumb.mp4';
+      // Keep the img in the DOM (hidden): Chirpy's load handler clears the
+      // shimmer on its parent and fails if the img has been detached.
+      img.hidden = true;
+      img.after(v);
+      return v;
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) e.target.play().catch(() => {});
+        else e.target.pause();
+      }
+    }, { threshold: 0.25 });
+    videos.forEach((v) => io.observe(v));
+  });
+</script>

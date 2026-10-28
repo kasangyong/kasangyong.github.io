@@ -4,8 +4,8 @@ date: 2026-10-23 10:50:00 +0900
 categories: [AI, Agent]
 tags: [claude-code, mcp, hooks, supabase, postgres, rls, nuitka, github-actions, security]
 image:
-  path: /assets/img/posts/ccx-claude-code-sharing/architecture.png
-  alt: ccx 시스템 아키텍처
+  path: /assets/img/posts/ccx-claude-code-sharing/thumb-poster.jpg
+  alt: 한 사람의 Claude가 한 일이 카드가 되어 다른 사람의 Claude에게 건너가는 ccx 소개 애니메이션
 ---
 
 각자 다른 컴퓨터에서 Claude Code를 쓰는 사람들이 웹 로비에 방을 만들면, 서로의 Claude가 무엇을 물었고 어떤 도구로 무엇을 확인했고 어떻게 답했는지 알고서 대화를 시작하게 해 주는 플러그인을 만들었다. 1인 프로젝트이고, 아래 수치는 v0.3.0(2026-09-30 태그) 기준이다.
@@ -21,7 +21,7 @@ image:
 | 답변 끝 훅 p95 | 571~605ms (같은 조건) |
 | 배포 | 공개 저장소 `ccx-dist`의 마켓플레이스, zip sha256 고정 |
 
-{% include embed/video.html src='/assets/img/posts/ccx-claude-code-sharing/explainer.mp4' poster='/assets/img/posts/ccx-claude-code-sharing/explainer-poster.jpg' title='Claude Code 턴 하나가 게이트를 통과해 카드가 되고, 서버를 거쳐 상대 Claude의 컨텍스트에 참고 데이터로 들어가는 과정' loop=true %}
+{% include embed/video.html src='/assets/img/posts/ccx-claude-code-sharing/intro.mp4' poster='/assets/img/posts/ccx-claude-code-sharing/intro-poster.jpg' title='ccx 소개: 다른 책상의 Claude가 서로 한 일을 알고 대화를 시작한다' %}
 
 ## 1. 무엇을 보내고 무엇을 안 보내나
 
@@ -87,6 +87,8 @@ _왼쪽이 내 컴퓨터, 가운데가 웹 로비와 Supabase, 오른쪽 위가 
 MCP 서버는 SDK 없이 직접 짰다. 필요한 메서드는 `initialize`, `tools/list`, `tools/call`, `ping` 넷뿐인데, SDK를 쓰면 pydantic, anyio, starlette가 같이 딸려 와서 공급망 표면이 얻는 것보다 크다고 봤다(`mcp_stdio.py` 주석, 결정 5-2). 구현은 줄 단위 JSON-RPC 2.0이 전부다.
 
 ## 3. 턴 하나가 카드가 되기까지
+
+{% include embed/video.html src='/assets/img/posts/ccx-claude-code-sharing/explainer.mp4' poster='/assets/img/posts/ccx-claude-code-sharing/explainer-poster.jpg' title='Claude Code 턴 하나가 게이트를 통과해 카드가 되고, 서버를 거쳐 상대 Claude의 컨텍스트에 참고 데이터로 들어가는 과정' loop=true %}
 
 ### 3-1. 게이트: 판정은 턴 시작에 한 번
 
