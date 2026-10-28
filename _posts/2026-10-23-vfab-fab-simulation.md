@@ -5,8 +5,8 @@ categories: [Simulation, DES]
 tags: [simpy, discrete-event-simulation, smt2020, pyscfabsim, semiconductor, dispatching, python]
 math: true
 image:
-  path: /assets/img/posts/vfab-fab-simulation/crosscheck-light.png
-  alt: VFAB 엔진과 PySCFabSim의 HVLM 사이클타임 비교
+  path: /assets/img/posts/vfab-fab-simulation/thumb-poster.jpg
+  alt: 반도체 팹과 사출성형 공장, CNC 가공장의 데이터를 모듈 여섯 개로 분석하는 VFAB 소개 애니메이션
 ---
 
 반도체 팹 테스트베드 SMT2020을 읽어 들이는 파서와 재진입·배치·셋업·PM·고장을 돌리는 이산사건 시뮬레이터를 SimPy 위에 직접 짰다. 기준 시뮬레이터 PySCFabSim과는 입력을 칸 단위로, 출력을 실행 단위로 대조했고, 그다음에 디스패칭 규칙과 장비 정지가 어떤 효과를 내는지 쟀다.
@@ -21,7 +21,7 @@ image:
 | 실행 비용 | 단독 실행은 HVLM 1년, 코어 하나로 약 9분(README). 로드맵은 시뮬레이션 한 번을 20~30분으로 잡았다 |
 | 검증 | pytest 1,524개 통과, ruff·mypy 0건 (2026-10-07 기준) |
 
-{% include embed/video.html src='/assets/img/posts/vfab-fab-simulation/explainer.mp4' poster='/assets/img/posts/vfab-fab-simulation/explainer-poster.jpg' title='첫 PM을 장비들에 한꺼번에 주느냐 나눠 주느냐가 두 엔진의 사이클타임 차이를 만든다. 장비 4대 레인은 예시' loop=true %}
+{% include embed/video.html src='/assets/img/posts/vfab-fab-simulation/intro.mp4' poster='/assets/img/posts/vfab-fab-simulation/intro-poster.jpg' title='VFAB 소개: 모듈 여섯 개와 단 하나의 다리, 하나의 분석 시스템' %}
 
 ## 1. 무엇을 시뮬레이션하고 무엇을 안 했나
 
@@ -236,6 +236,8 @@ def test_a_pm_elsewhere_does_not_move_a_lots_process_times() -> None:
 처음부터 이 테스트로 충분했던 건 아니다. Task 33 1차 리뷰에서는 "규칙이 바뀌어도 로트의 추첨은 같다"는 핵심 전제를 확인하는 테스트가 없다는 지적을 받았다. 픽스처에 샘플링 1 미만, 재작업, 확률 반송이 없다 보니 그 추첨을 공유 스트림으로 되돌려도 테스트가 다 통과했다. 2차 리뷰에서는 내가 만든 "공유 스트림" 변이가 진짜보다 잡기 쉬운 변이였다는 게 드러났다. 리뷰어가 진짜 공유 스트림을 넣어 보니 대칭 픽스처에서 추첨 순서가 우연히 같아 4개가 살아남았다. 결국 리뷰를 네 번 받고서야 통과했다.
 
 ## 5. PySCFabSim 교차검증: 12.5일 차이의 출처
+
+{% include embed/video.html src='/assets/img/posts/vfab-fab-simulation/explainer.mp4' poster='/assets/img/posts/vfab-fab-simulation/explainer-poster.jpg' title='첫 PM을 장비들에 한꺼번에 주느냐 나눠 주느냐가 두 엔진의 사이클타임 차이를 만든다. 장비 4대 레인은 예시' loop=true %}
 
 같은 SMT2020 입력을 두 엔진에서 365일씩 돌리고 200~365일 창을 잰다. 집계는 두 엔진 모두 같은 함수(`window_summary`)로 한다. PySCFabSim 자체 통계는 초기 WIP 로트까지 세기 때문에 쓰지 않았다.
 
