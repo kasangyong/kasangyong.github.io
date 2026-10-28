@@ -31,8 +31,9 @@
       v.preload = 'none';
       v.setAttribute('aria-label', img.getAttribute('alt') || '');
       v.src = src.slice(0, -still.length) + '/thumb.mp4';
-      // Keep the img in the DOM (hidden): Chirpy's load handler clears the
-      // shimmer on its parent and fails if the img has been detached.
+      /* Keep the img in the DOM (hidden): Chirpy's load handler clears the
+         shimmer on its parent and fails if the img has been detached.
+         No line comments here: the production build compresses this onto one line. */
       img.hidden = true;
       img.after(v);
       return v;
