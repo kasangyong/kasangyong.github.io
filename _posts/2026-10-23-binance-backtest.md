@@ -5,8 +5,8 @@ categories: [Trading, Backtesting]
 tags: [python, pandas, ccxt, ta, binance, futures, backtesting, overfitting]
 math: true
 image:
-  path: /assets/img/posts/binance-backtest/periods-light.png
-  alt: 두 검증 구간의 기간과 겹치는 부분
+  path: /assets/img/posts/binance-backtest/thumb-poster.jpg
+  alt: 전략 후보 14개 중 하나만 남고 그 전략으로 봇이 돌아가는 XRP 자동매매 봇 소개 애니메이션
 ---
 
 바이낸스 선물에서 XRP/USDT를 15분봉 추세 전략으로 자동 매매하는 파이썬 봇을 만들었고, 전략을 고르는 데 쓴 백테스트 스크립트도 9개 짰다.
@@ -24,7 +24,7 @@ image:
 
 결과 파일이 저장소에 없어서 아래에 나오는 수익률 이야기는 전부 `work_log.md`에 적힌 문장에 기댄다. 백테스트 출력은 콘솔에만 찍혔고 커밋하지 않았다.
 
-{% include embed/video.html src='/assets/img/posts/binance-backtest/explainer.mp4' poster='/assets/img/posts/binance-backtest/explainer-poster.jpg' title='신호가 난 봉의 종가에 들어가 다음 봉부터 SL을 먼저, TP를 나중에 보고 청산한 뒤 잔고를 갱신하는 백테스트 엔진의 한 바퀴' loop=true %}
+{% include embed/video.html src='/assets/img/posts/binance-backtest/intro.mp4' poster='/assets/img/posts/binance-backtest/intro-poster.jpg' title='XRP 선물 자동매매 봇 소개: 전략 14개 중 하나를 골라 봇으로 돌린다' %}
 
 ## 1. 저장소 두 개의 관계
 
@@ -87,6 +87,8 @@ if self.position is not None:
 ```
 
 ## 3. 백테스트 엔진
+
+{% include embed/video.html src='/assets/img/posts/binance-backtest/explainer.mp4' poster='/assets/img/posts/binance-backtest/explainer-poster.jpg' title='신호가 난 봉의 종가에 들어가 다음 봉부터 SL을 먼저, TP를 나중에 보고 청산한 뒤 잔고를 갱신하는 백테스트 엔진의 한 바퀴' loop=true %}
 
 엔진은 라이브러리로 따로 빼지 않고 스크립트마다 `backtest()`/`run()` 함수로 복사해 두었다. 아래는 최종 후보 비교에 쓴 `backtest_strategy_lab3.py` 버전이다.
 

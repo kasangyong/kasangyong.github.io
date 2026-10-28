@@ -5,8 +5,8 @@ categories: [AI, Reinforcement Learning]
 tags: [mujoco, mujoco-warp, ppo, motion-imitation, deepmimic, self-play, humanoid, retargeting, reward-shaping]
 math: true
 image:
-  path: /assets/img/posts/boxing-humanoid-rl/spar-frames.png
-  alt: 두 휴머노이드 복서가 스파링하다 한 명이 넘어지는 장면
+  path: /assets/img/posts/boxing-humanoid-rl/thumb-poster.jpg
+  alt: 모션캡처를 따라 서기와 펀치, 발놀림을 배운 휴머노이드가 스파링에 이르는 소개 애니메이션
 ---
 
 복싱 모션캡처 클립을 28자유도 휴머노이드로 리타게팅하고, 그 클립을 물리 시뮬레이션 안에서 따라 하도록 PPO로 학습시켰다. 한 명이 콤비네이션과 발놀림을 하는 단계를 거쳐, 같은 정책의 복사본끼리 맞붙는 스파링까지 갔다.
@@ -26,7 +26,7 @@ image:
 
 > 참조 동작: Open Motion Project, ACCAD, The Ohio State University (CC BY 3.0)
 
-{% include embed/video.html src='/assets/img/posts/boxing-humanoid-rl/explainer.mp4' poster='/assets/img/posts/boxing-humanoid-rl/explainer-poster.jpg' title='같은 두 오차 지점에서 지수의 인자만 제곱합에서 RMS로 바꾸자 훅 수준 오차의 보상이 0.007에서 0.28이 됐다' loop=true %}
+{% include embed/video.html src='/assets/img/posts/boxing-humanoid-rl/intro.mp4' poster='/assets/img/posts/boxing-humanoid-rl/intro-poster.jpg' title='복싱 휴머노이드 소개: 서기에서 펀치, 발놀림, 1:1 스파링까지' %}
 
 ## 1. 시뮬레이터: 환경 수가 보상보다 먼저였다
 
@@ -169,6 +169,8 @@ self.scored = jsd > 1e-4
 클립은 이름보다 측정으로 골랐다. `E6_QuickRetreat`은 이름과 달리 앞으로 간다. 134프레임 동안 +2.000 m 전진하고, 이동 방향이 정면축과 이루는 성분이 +0.97이라 후퇴 클립에서 뺐다. 실제로 쓰는 13개는 펀치 7개(잽 좌우, 크로스 좌우, 라이트 훅, 어퍼컷 좌우)와 발놀림 6개(Bounce, Advance, Retreat, 사이드스텝 좌우, SuperFastAdvance)다.
 
 ## 3. 모방 보상
+
+{% include embed/video.html src='/assets/img/posts/boxing-humanoid-rl/explainer.mp4' poster='/assets/img/posts/boxing-humanoid-rl/explainer-poster.jpg' title='같은 두 오차 지점에서 지수의 인자만 제곱합에서 RMS로 바꾸자 훅 수준 오차의 보상이 0.007에서 0.28이 됐다' loop=true %}
 
 DeepMimic 계열의 추적 보상이고, 항 다섯 개를 곱하지 않고 더한다. 이 선택은 일어서기 실험(보류 중)에서 배웠다. 머리 높이 × 수직성 × COM 속도 × 발 간격으로 곱했더니 200M 스텝 뒤 앉은 자세에서 멈췄다. 앉기에서 서기로 가려면 수직성과 속도가 잠깐 떨어지는 구간을 지나야 하는데, 곱이면 목적지가 더 좋아도 가는 길에 벌을 받는다. 펀치도 같아서, 펀치를 내는 순간 가드가 열리고 균형이 흔들리니 곱셈 보상에서는 펀치를 안 내는 정책이 나온다.
 
