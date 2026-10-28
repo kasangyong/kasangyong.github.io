@@ -4,8 +4,8 @@ date: 2026-10-25 11:00:00 +0900
 categories: [Blockchain, Distributed Systems]
 tags: [gpu, toploc, eip-712, solidity, merkle-tree, fastapi, docker, cuda, llm-inference]
 image:
-  path: /assets/img/posts/sublet-gpu-marketplace/architecture-light.png
-  alt: Sublet 잡 흐름과 권한 분리
+  path: /assets/img/posts/sublet-gpu-marketplace/intro-cover.webp
+  alt: 남의 노트북 GPU가 내 작업을 처리하고 증명과 정산까지 이어지는 Sublet 소개 애니메이션
 ---
 
 유휴 GPU를 노드로 등록해 남의 LLM 추론 잡을 돌리고, 그 결과에 활성화 지문과 서명과 머클 루트를 붙여 스마트 컨트랙트가 정산하게 하는 플랫폼 Sublet을 만들었다. 다른 사람의 노트북이 명령 한 줄로 노드가 되어 내 잡을 GPU로 처리하는 데까지 실제로 돌렸다.
@@ -21,8 +21,6 @@ image:
 | 다른 사람 GPU | RTX 4050 Laptop에서 CPU 2.5 tok/s, GPU 약 44 tok/s |
 | 미해결로 선언한 것 | R1 이종 백엔드 검증(정직한 실행도 최대 42), R4 잡당 온체인 비용(정상 경로 중앙값 합 338,678 gas, 배치로 묶어도 약 3.3%만 준다) |
 | 기간 | 2026-08-24 설계 ~ 09-02, 커밋 83개 |
-
-{% include embed/video.html src='/assets/img/posts/sublet-gpu-marketplace/explainer.mp4' poster='/assets/img/posts/sublet-gpu-marketplace/explainer-poster.jpg' title='잡 하나가 에스크로 예치, 격리 추론, TOPLOC 지문과 서명된 증거, checker 판정, 어테스트를 거쳐 settle 정산까지 가는 과정. 어테스트는 지금 한 프로세스가 키를 모두 든다' loop=true %}
 
 ## 1. 주장하는 것과 주장하지 않는 것
 
@@ -59,6 +57,8 @@ image:
 위 표는 목표이고 지금 구현은 몇 칸이 비어 있다. 작업량 재계수는 산술 일관성 검사에 머물러 있고(7절), `sublet-verify`의 TOPLOC 단계는 SKIPPED이며 m-of-n은 배선이 한 프로세스로 닫혀 있다(2절). 컨트랙트에도 신뢰 가정과 어긋나는 함수가 둘 있다(8절).
 
 ## 2. 권한을 셋으로 나눈 잡 흐름
+
+{% include embed/video.html src='/assets/img/posts/sublet-gpu-marketplace/explainer.mp4' poster='/assets/img/posts/sublet-gpu-marketplace/explainer-poster.jpg' title='잡 하나가 에스크로 예치, 격리 추론, TOPLOC 지문과 서명된 증거, checker 판정, 어테스트를 거쳐 settle 정산까지 가는 과정. 어테스트는 지금 한 프로세스가 키를 모두 든다' loop=true %}
 
 ![잡 흐름과 권한 분리](/assets/img/posts/sublet-gpu-marketplace/architecture-light.png){: .light }
 ![잡 흐름과 권한 분리](/assets/img/posts/sublet-gpu-marketplace/architecture-dark.png){: .dark }
