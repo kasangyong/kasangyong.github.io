@@ -4,8 +4,8 @@ date: 2026-10-23 11:00:00 +0900
 categories: [AI, Multimodal]
 tags: [vqa, qwen, vlm, lora, qlora, unsloth, bf16, tta]
 image:
-  path: /assets/img/posts/vqa-qwen35-lora/val-loss-light.png
-  alt: 9B 4-bit QLoRA와 4B BF16 LoRA의 val_loss 비교 (조건 상이)
+  path: /assets/img/posts/vqa-qwen35-lora/thumb-poster.jpg
+  alt: 재활용품 사진 한 장을 보고 4지선다의 정답 글자 하나를 고르는 VQA 소개 애니메이션
 ---
 
 재활용품 사진과 4지선다 질문을 받아 정답 글자 하나를 내는 VQA 모델을 Qwen3.5-4B에 LoRA를 붙여 만들었다. SSAFY AI 챌린지에 4인 팀으로 참가했다(포트폴리오 기록, 저장소 미기재).
@@ -23,7 +23,7 @@ image:
 
 저장소에는 개인별 분담 기록이 없어서 아래 실험은 팀 단위로 적는다.
 
-{% include embed/video.html src='/assets/img/posts/vqa-qwen35-lora/explainer.mp4' poster='/assets/img/posts/vqa-qwen35-lora/explainer-poster.jpg' title='예시 문항 하나를 선지 순서 5가지로 다섯 번 묻고, 원래 글자로 되돌린 다수결로 답을 정하는 추론 경로' loop=true %}
+{% include embed/video.html src='/assets/img/posts/vqa-qwen35-lora/intro.mp4' poster='/assets/img/posts/vqa-qwen35-lora/intro-poster.jpg' title='재활용품 VQA 소개: 한 장의 사진, 한 글자의 답' %}
 
 ## 1. 문제와 데이터
 
@@ -281,6 +281,8 @@ if step % GRAD_ACCUM != 0:
 이렇게 해야 스케줄러 스텝 수가 `ceil(len / GRAD_ACCUM)`으로 계산한 총 스텝과 맞는다. 남은 기울기도 16으로 나눈 값이라 4,565개 기준으로 나머지 5개만 쌓인 그 스텝의 기울기 크기는 꽉 찬 스텝의 약 5/16이다.
 
 ## 6. 추론: 선지 순서 5가지 다수결
+
+{% include embed/video.html src='/assets/img/posts/vqa-qwen35-lora/explainer.mp4' poster='/assets/img/posts/vqa-qwen35-lora/explainer-poster.jpg' title='예시 문항 하나를 선지 순서 5가지로 다섯 번 묻고, 원래 글자로 되돌린 다수결로 답을 정하는 추론 경로' loop=true %}
 
 추론 해상도 상한은 학습(448²)보다 높은 1,003,520 px로 올린다. 학습 때 VRAM을 아끼려고 낮췄던 해상도를 메모리 여유가 있는 추론에서는 되돌린다.
 
