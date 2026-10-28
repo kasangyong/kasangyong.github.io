@@ -1,5 +1,5 @@
 ---
-title: "ccx: 다른 컴퓨터의 Claude Code끼리 대화 궤적을 공유하는 플러그인, 파일은 한 바이트도 안 보내고"
+title: "ccx: 각자의 Claude Code가 서로의 작업을 알고 대화하게 하는 협업 플러그인"
 date: 2026-10-23 10:50:00 +0900
 categories: [AI, Agent]
 tags: [claude-code, mcp, hooks, supabase, postgres, rls, nuitka, github-actions, security]

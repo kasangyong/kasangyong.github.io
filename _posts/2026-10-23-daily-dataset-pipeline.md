@@ -1,5 +1,5 @@
 ---
-title: "공개 소스 12개를 매일 쌓는 Dagster 파이프라인: 백필이 오염이 되는 소스를 레지스트리로 막기"
+title: "매일 자동으로 쌓이는 공개 데이터셋: 12개 소스 수집 파이프라인"
 date: 2026-10-23 10:10:00 +0900
 categories: [Data, Pipeline]
 tags: [python, dagster, github-actions, data-pipeline, backfill, idempotency, pytest]

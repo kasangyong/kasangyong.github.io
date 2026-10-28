@@ -1,5 +1,5 @@
 ---
-title: "XRP 선물 자동매매 봇: 14개 전략을 두 1년 구간에 돌려 하나를 고르기까지"
+title: "XRP 선물 자동매매 봇: 전략 14개를 백테스트로 걸러 하나를 고르다"
 date: 2026-10-23 11:10:00 +0900
 categories: [Trading, Backtesting]
 tags: [python, pandas, ccxt, ta, binance, futures, backtesting, overfitting]

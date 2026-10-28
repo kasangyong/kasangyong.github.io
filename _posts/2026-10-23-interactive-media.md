@@ -1,5 +1,5 @@
 ---
-title: "웹 인터랙션 17가지를 한 페이지에: Stable Fluids 셰이더, MediaPipe 두 손 제어, 데모 생명주기 관리"
+title: "손짓과 스크롤로 움직이는 웹 인터랙션 17가지"
 date: 2026-10-23 12:00:00 +0900
 categories: [Web, Graphics]
 tags: [webgl2, glsl, threejs, mediapipe, web-audio, typescript, intersectionobserver]

@@ -1,5 +1,5 @@
 ---
-title: "ΔG로만 사는 세포와 원소 장부: Taichi CUDA로 짠 각본 없는 진화 시뮬레이션"
+title: "각본 없는 진화 시뮬레이션: 화학 에너지로만 살아가는 세포들"
 date: 2026-10-25 10:00:00 +0900
 categories: [Simulation, Artificial Life]
 tags: [taichi, cuda, gpu, artificial-life, evolution, python, ctrnn, resistive-force-theory]

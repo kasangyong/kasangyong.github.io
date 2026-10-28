@@ -1,5 +1,5 @@
 ---
-title: "고령 고객 개인화 FDS: 룰·z-score 베이스라인·계좌평판 3층으로 송금 직전 채점하기"
+title: "평생곁에: 어르신 송금 사기를 송금 직전에 막는 이상거래 탐지"
 date: 2026-10-25 13:00:00 +0900
 categories: [AI, FDS]
 tags: [fds, anomaly-detection, z-score, fastapi, rag, exaone, ollama, bge-m3]

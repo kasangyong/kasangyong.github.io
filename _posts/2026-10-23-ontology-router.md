@@ -1,5 +1,5 @@
 ---
-title: "지식그래프 라우팅 검색 다시 재기: 순환 골든셋, held-out, McNemar와 순열검정"
+title: "질문 유형에 따라 검색 경로를 고르는 지식그래프 검색, 정말 나아졌나"
 date: 2026-10-23 11:40:00 +0900
 categories: [AI, RAG]
 tags: [knowledge-graph, ontology, neo4j, graphrag, rag, evaluation, mcnemar, permutation-test]

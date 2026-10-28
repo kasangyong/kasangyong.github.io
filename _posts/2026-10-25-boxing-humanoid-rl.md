@@ -1,5 +1,5 @@
 ---
-title: "모션캡처를 따라 하는 휴머노이드 복서: MuJoCo-Warp PPO로 모방에서 스파링까지"
+title: "스스로 복싱을 배우는 휴머노이드: 모션캡처 모방에서 1:1 스파링까지"
 date: 2026-10-25 12:00:00 +0900
 categories: [AI, Reinforcement Learning]
 tags: [mujoco, mujoco-warp, ppo, motion-imitation, deepmimic, self-play, humanoid, retargeting, reward-shaping]

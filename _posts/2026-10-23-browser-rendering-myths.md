@@ -1,5 +1,5 @@
 ---
-title: "렌더링 통념 27개를 CDP 트레이스로 다시 쟀다: 뒤집힌 것, 조건이 붙은 것, 내가 틀린 것"
+title: "브라우저 렌더링 통념 27개, 직접 재 보니"
 date: 2026-10-23 10:20:00 +0900
 categories: [Web, Performance]
 tags: [chrome, cdp, tracing, rendering, compositor, content-visibility, lcp]

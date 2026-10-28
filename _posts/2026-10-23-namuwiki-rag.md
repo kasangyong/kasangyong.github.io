@@ -1,5 +1,5 @@
 ---
-title: "나무위키 11만 문서 RAG: Kafka 수집 파이프라인, 하이브리드 검색, 규칙 기반 지식그래프"
+title: "나무위키 11만 문서 AI 검색: 수집부터 검색, 지식그래프까지"
 date: 2026-10-23 11:30:00 +0900
 categories: [AI, RAG]
 tags: [rag, kafka, qdrant, postgresql, splade, reranker, knowledge-graph, pagerank, leiden, crawling]

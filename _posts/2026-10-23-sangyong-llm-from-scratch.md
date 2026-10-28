@@ -1,5 +1,5 @@
 ---
-title: "282M 코드 LLM을 밑바닥부터: V100S 한 장으로 69억 토큰을 완주하기까지"
+title: "코드 LLM을 처음부터 직접 학습하기: GPU 한 장으로 끝까지"
 date: 2026-10-23 10:00:00 +0900
 categories: [AI, LLM]
 tags: [pytorch, transformer, rope, gqa, swiglu, fp16, pretraining]

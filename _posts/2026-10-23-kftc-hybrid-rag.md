@@ -1,5 +1,5 @@
 ---
-title: "공정위 의결서 하이브리드 RAG: BM25·BGE-M3 융합부터 제목 앵커링까지"
+title: "공정위 의결서에 묻고 답하는 AI 검색: 키워드와 의미 검색을 합친 RAG"
 date: 2026-10-23 10:40:00 +0900
 categories: [AI, RAG]
 tags: [rag, bm25, bge-m3, rrf, reranker, exaone, lora, kiwipiepy, qdrant, fastapi]

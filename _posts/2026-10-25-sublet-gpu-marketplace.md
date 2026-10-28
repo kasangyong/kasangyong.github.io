@@ -1,5 +1,5 @@
 ---
-title: "Sublet: 남의 GPU에서 돌린 추론을 TOPLOC 지문과 머클 커밋으로 검증하고 컨트랙트로 정산하기"
+title: "Sublet: 놀고 있는 GPU를 빌려주고 빌려 쓰는 AI 연산 마켓플레이스"
 date: 2026-10-25 11:00:00 +0900
 categories: [Blockchain, Distributed Systems]
 tags: [gpu, toploc, eip-712, solidity, merkle-tree, fastapi, docker, cuda, llm-inference]

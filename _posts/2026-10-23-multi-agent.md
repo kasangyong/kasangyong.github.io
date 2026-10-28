@@ -1,5 +1,5 @@
 ---
-title: "LLM 리뷰어 대신 컴파일러를: 에이전트 6개가 3라운드 도는 코드 생성 파이프라인"
+title: "코드를 짜고 스스로 검증하는 AI 에이전트 팀: 리뷰는 컴파일러가 맡는다"
 date: 2026-10-23 11:20:00 +0900
 categories: [AI, Agent]
 tags: [multi-agent, gemini, llm, prompt-engineering, python, nodejs, esbuild]

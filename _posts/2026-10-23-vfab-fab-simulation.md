@@ -1,5 +1,5 @@
 ---
-title: "SMT2020 팹을 SimPy로 다시 짜고, 기준 엔진과 처리량 57.2 대 57.2를 맞추기까지"
+title: "반도체 제조 데이터 분석 시스템 VFAB: 이상감지부터 팹 시뮬레이션까지 6개 모듈"
 date: 2026-10-23 10:30:00 +0900
 categories: [Simulation, DES]
 tags: [simpy, discrete-event-simulation, smt2020, pyscfabsim, semiconductor, dispatching, python]

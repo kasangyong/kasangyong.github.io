@@ -1,5 +1,5 @@
 ---
-title: "재활용품 VQA: 9B 4-bit 대신 4B BF16 LoRA를 고른 근거와 그 근거의 한계"
+title: "사진을 보고 분리배출을 답하는 AI: 작은 모델을 고른 이유"
 date: 2026-10-23 11:00:00 +0900
 categories: [AI, Multimodal]
 tags: [vqa, qwen, vlm, lora, qlora, unsloth, bf16, tta]

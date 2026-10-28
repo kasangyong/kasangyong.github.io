@@ -1,5 +1,5 @@
 ---
-title: "픽셀을 텍스트로 그리기: 문자 격자 포맷, 도트 린터, 그 에셋으로 만든 브라우저 게임"
+title: "글자로 그리는 픽셀아트: 텍스트 포맷 하나로 게임 에셋까지"
 date: 2026-10-23 12:10:00 +0900
 categories: [Graphics, Pixel Art]
 tags: [pixel-art, python, pillow, linter, javascript, canvas, game-dev]
