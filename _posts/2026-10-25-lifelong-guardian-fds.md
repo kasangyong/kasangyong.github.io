@@ -5,8 +5,8 @@ categories: [AI, FDS]
 tags: [fds, anomaly-detection, z-score, fastapi, rag, exaone, ollama, bge-m3]
 math: true
 image:
-  path: /assets/img/posts/lifelong-guardian-fds/baseline-light.png
-  alt: 두 고객의 과거 이체 분포와 z=3 경계, 이번 300만원의 위치
+  path: /assets/img/posts/lifelong-guardian-fds/thumb-poster.jpg
+  alt: 어르신이 송금을 누르는 순간 평소와 다른 송금을 잡아 멈추고 가족에게 알리는 평생곁에 소개 애니메이션
 ---
 
 JB금융그룹 Fin:AI Challenge(지정주제 1, 개인 라이프케어 AI)에 1인으로 낸 「평생곁에」는 고령 고객이 송금 버튼을 누르는 순간 거래를 채점해서 위험하면 멈춰 세우는 FDS다. 판정은 금액 자체가 아니라 그 고객의 평소 패턴에서 얼마나 벗어났는지로 내리고 옆에 로컬 EXAONE으로 돌아가는 자산 케어 RAG와 본부용 관제 브리핑을 붙였다.
@@ -21,7 +21,7 @@ JB금융그룹 Fin:AI Challenge(지정주제 1, 개인 라이프케어 AI)에 1�
 | 코드 | 백엔드 파이썬 6개 파일 706줄, 데모 단일 HTML 1,338줄 |
 | 기간 | 2026-06-29 ~ 07-05, 커밋 66개 |
 
-{% include embed/video.html src='/assets/img/posts/lifelong-guardian-fds/explainer.mp4' poster='/assets/img/posts/lifelong-guardian-fds/explainer-poster.jpg' title='김OO 시나리오(백엔드 켬)의 이체 한 건이 1층 룰, 2층 z-score 베이스라인, 3층 계좌평판을 지나 송금 보류와 ARS·지정인 알림까지 가는 과정' loop=true %}
+{% include embed/video.html src='/assets/img/posts/lifelong-guardian-fds/intro.mp4' poster='/assets/img/posts/lifelong-guardian-fds/intro-poster.jpg' title='평생곁에 소개: 송금 버튼 뒤에서 평소와 다른 송금을 멈추고 가족과 은행으로 잇는다' %}
 
 ## 1. 문제: 300만원은 위험한 금액인가
 
@@ -43,6 +43,8 @@ JB금융그룹 Fin:AI Challenge(지정주제 1, 개인 라이프케어 AI)에 1�
 데모의 거래 이력은 전부 합성이고 등장인물은 실존 인물이 아닌 페르소나다. 사기 방어 시나리오의 김OO(재생 화면 속 이름은 김순자)와 박OO 두 명, 실시간 감시 탭의 가상 고객 다섯 명이 따로 있다. 감시 탭에도 김순자라는 고객이 있지만 과거 이체가 15만~20만원인 별개 페르소나다. 실서비스라면 은행이 이미 가진 자행 거래내역으로 `baseAmounts`와 `usualHours`를 채우게 된다.
 
 ## 2. 3층 엔진
+
+{% include embed/video.html src='/assets/img/posts/lifelong-guardian-fds/explainer.mp4' poster='/assets/img/posts/lifelong-guardian-fds/explainer-poster.jpg' title='김OO 시나리오(백엔드 켬)의 이체 한 건이 1층 룰, 2층 z-score 베이스라인, 3층 계좌평판을 지나 송금 보류와 ARS·지정인 알림까지 가는 과정' loop=true %}
 
 엔진은 `backend/fds.py`의 `evaluate()` 하나다. 데모 HTML 안에도 같은 함수를 JS로 두고, 파이썬 쪽은 그걸 1:1로 포팅했다. 백엔드가 꺼져 있어도 데모가 같은 판정을 내게 하려는 구조다.
 
