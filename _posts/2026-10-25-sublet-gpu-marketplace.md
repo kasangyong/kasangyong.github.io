@@ -4,7 +4,7 @@ date: 2026-10-25 11:00:00 +0900
 categories: [Blockchain, Distributed Systems]
 tags: [gpu, toploc, eip-712, solidity, merkle-tree, fastapi, docker, cuda, llm-inference]
 image:
-  path: /assets/img/posts/sublet-gpu-marketplace/intro-cover.webp
+  path: /assets/img/posts/sublet-gpu-marketplace/thumb-poster.jpg
   alt: 남의 노트북 GPU가 내 작업을 처리하고 증명과 정산까지 이어지는 Sublet 소개 애니메이션
 ---
 
@@ -21,6 +21,8 @@ image:
 | 다른 사람 GPU | RTX 4050 Laptop에서 CPU 2.5 tok/s, GPU 약 44 tok/s |
 | 미해결로 선언한 것 | R1 이종 백엔드 검증(정직한 실행도 최대 42), R4 잡당 온체인 비용(정상 경로 중앙값 합 338,678 gas, 배치로 묶어도 약 3.3%만 준다) |
 | 기간 | 2026-08-24 설계 ~ 09-02, 커밋 83개 |
+
+{% include embed/video.html src='/assets/img/posts/sublet-gpu-marketplace/intro.mp4' poster='/assets/img/posts/sublet-gpu-marketplace/intro-poster.jpg' title='Sublet 소개: 남의 GPU 위에서 돌아가는 내 작업' %}
 
 ## 1. 주장하는 것과 주장하지 않는 것
 
