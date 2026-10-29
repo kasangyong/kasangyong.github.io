@@ -5,8 +5,8 @@ categories: [AI, RAG]
 tags: [rag, kafka, qdrant, postgresql, splade, reranker, knowledge-graph, pagerank, leiden, crawling]
 math: true
 image:
-  path: /assets/img/posts/namuwiki-rag/search-ui.png
-  alt: 나무위키 RAG 검색 화면
+  path: /assets/img/posts/namuwiki-rag/thumb-poster.jpg
+  alt: 흩어진 나무위키 문서가 별처럼 모여 검색과 지식그래프로 이어지는 나무위키 RAG 소개 애니메이션
 ---
 
 나무위키를 직접 수집해 질문을 넣으면 근거가 되는 문단을 찾아 주는 검색 시스템을 만들었다. 수집·파싱·임베딩 단계는 Kafka 토픽으로 나눴고, 수집 중에 나온 링크·분류·인포박스로 지식그래프도 같이 쌓았다. 노트북 한 대(i7-13700H, RAM 32GB, RTX 4050 6GB)에서 돌렸다.
@@ -22,7 +22,7 @@ image:
 | 질의 1회 | 3.1초 (하이브리드 검색, RRF, 리랭킹) |
 | 자동 검증 | 20항목 통과, 경고 0, 실패 0 |
 
-{% include embed/video.html src='/assets/img/posts/namuwiki-rag/explainer.mp4' poster='/assets/img/posts/namuwiki-rag/explainer-poster.jpg' title='문서 하나가 프런티어에서 Kafka 토픽, 크롤링, 섹션 청킹, dense·sparse 임베딩을 지나 하이브리드 검색 결과로 돌아오는 흐름' loop=true %}
+{% include embed/video.html src='/assets/img/posts/namuwiki-rag/intro.mp4' poster='/assets/img/posts/namuwiki-rag/intro-poster.jpg' title='나무위키 RAG 소개: 흩어진 문서에서 이어진 지식까지' %}
 
 ## 1. 만들기 전에 잰 것들
 
@@ -48,6 +48,8 @@ p10이 336자이니 문서의 10% 이상은 청크 하나로 끝난다. 용량�
 다른 하나는 `/sidebar.json`이 32초짜리 창이라는 점이다. `/RecentChanges`는 JS로 그리는 SPA라 서버 응답이 비어 있고, 같은 정보는 `/sidebar.json`이 JSON으로 준다. 문제는 항목이 15개로 고정돼 있어 약 32초만 덮는다는 것이다. 10초 간격으로 18회(198초) 폴링해 보니 고유 문서 77개가 바뀌었다. 초당 0.389개, 하루로 치면 33,600개다. 폴링 주기가 30초를 넘으면 그 사이의 편집은 다시 확인할 방법이 없어서 주기를 10초로 고정했다. 하루 8,640회라 부하는 무시할 만하다.
 
 ## 2. 단계는 Kafka 토픽으로만 대화한다
+
+{% include embed/video.html src='/assets/img/posts/namuwiki-rag/explainer.mp4' poster='/assets/img/posts/namuwiki-rag/explainer-poster.jpg' title='문서 하나가 프런티어에서 Kafka 토픽, 크롤링, 섹션 청킹, dense·sparse 임베딩을 지나 하이브리드 검색 결과로 돌아오는 흐름' loop=true %}
 
 ![파이프라인 구성](/assets/img/posts/namuwiki-rag/pipeline-light.png){: .light }
 ![파이프라인 구성](/assets/img/posts/namuwiki-rag/pipeline-dark.png){: .dark }
