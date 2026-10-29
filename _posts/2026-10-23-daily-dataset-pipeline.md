@@ -4,8 +4,8 @@ date: 2026-10-23 10:10:00 +0900
 categories: [Data, Pipeline]
 tags: [python, dagster, github-actions, data-pipeline, backfill, idempotency, pytest]
 image:
-  path: /assets/img/posts/daily-dataset-pipeline/status-grid-light.png
-  alt: 소스 12개 × 날짜별 파티션 최종 상태
+  path: /assets/img/posts/daily-dataset-pipeline/thumb-poster.jpg
+  alt: 매일 새벽 소스마다 하루치 블록이 날짜 칸에 쌓이고 빈칸은 다음 날 스스로 메워지는 데이터셋 파이프라인 소개 애니메이션
 ---
 
 환율, GitHub 신규 저장소, 해커뉴스, 위키백과 인기문서, 지진, 날씨, 팩트체크, arXiv, 임상시험, 암호화폐, 연합뉴스, GeekNews까지 공개 소스 12개를 매일 수집해 날짜 파티션으로 저장소에 커밋하는 파이프라인을 만들었다. 자산 정의는 Dagster로 하고, 실행은 GitHub Actions cron에 맡겼다.
@@ -26,7 +26,7 @@ image:
 ![소스 12개 × 날짜별 파티션 최종 상태](/assets/img/posts/daily-dataset-pipeline/status-grid-dark.png){: .dark }
 _연한 칸은 0행으로 성공한 파티션이고, 대부분 임상시험의 주말이다_
 
-{% include embed/video.html src='/assets/img/posts/daily-dataset-pipeline/explainer.mp4' poster='/assets/img/posts/daily-dataset-pipeline/explainer-poster.jpg' title='cron이 깨운 하루치 실행이 레지스트리, 수집 루틴과 검증, 구멍 복구, 종료 코드를 거쳐 커밋까지 가는 흐름' loop=true %}
+{% include embed/video.html src='/assets/img/posts/daily-dataset-pipeline/intro.mp4' poster='/assets/img/posts/daily-dataset-pipeline/intro-poster.jpg' title='데이터셋 파이프라인 소개: 하루치가 쌓여 두 달의 기록이 되기까지' %}
 
 ## 1. 소스마다 성질이 다르다
 
@@ -50,6 +50,8 @@ _연한 칸은 0행으로 성공한 파티션이고, 대부분 임상시험의 �
 파이프라인 코드는 대부분 이 표의 오른쪽 네 열에서 나왔다.
 
 ## 2. Dagster 자산과 파티션 레이아웃
+
+{% include embed/video.html src='/assets/img/posts/daily-dataset-pipeline/explainer.mp4' poster='/assets/img/posts/daily-dataset-pipeline/explainer-poster.jpg' title='cron이 깨운 하루치 실행이 레지스트리, 수집 루틴과 검증, 구멍 복구, 종료 코드를 거쳐 커밋까지 가는 흐름' loop=true %}
 
 ### 왜 Dagster인가, 그런데 왜 스케줄러는 밖에 있나
 
