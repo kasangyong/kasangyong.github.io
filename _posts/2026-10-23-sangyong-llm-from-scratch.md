@@ -5,8 +5,8 @@ categories: [AI, LLM]
 tags: [pytorch, transformer, rope, gqa, swiglu, fp16, pretraining]
 math: true
 image:
-  path: /assets/img/posts/sangyong-llm/training-curve-light.png
-  alt: 학습·검증 손실 곡선
+  path: /assets/img/posts/sangyong-llm/thumb-poster.jpg
+  alt: 코드 데이터를 걸러 토크나이저와 트랜스포머를 직접 만들고 GPU 한 장으로 학습해 코드를 써내는 LLM 소개 애니메이션
 ---
 
 파이썬 코드를 생성하는 282M 파라미터 트랜스포머를 직접 구현해서 Tesla V100S 한 장으로 6,879,527,547 토큰을 1에포크 학습시켰다.
@@ -21,7 +21,7 @@ image:
 | 벽시계 | 15.1일 (실제 계산 12.5일) |
 | 코드 / 테스트 | 5,119줄 / 3,481줄, 162항목 통과 |
 
-{% include embed/video.html src='/assets/img/posts/sangyong-llm/explainer.mp4' poster='/assets/img/posts/sangyong-llm/explainer-poster.jpg' title='캐시가 있는 상태에서 질의 여러 개를 넣으면 is_causal=True가 마스크를 왼쪽 위로 정렬해 에러 없이 틀린 값을 낸다. 그래서 이 경로를 막았다' loop=true %}
+{% include embed/video.html src='/assets/img/posts/sangyong-llm/intro.mp4' poster='/assets/img/posts/sangyong-llm/intro-poster.jpg' title='코드 LLM 소개: 잡음에서 함수까지' %}
 
 ## 1. 무엇을 직접 만들고 무엇을 빌렸나
 
@@ -201,6 +201,8 @@ for name, p in self.named_parameters():
 블록마다 잔차에 값을 두 번(어텐션 출력 `wo`, FFN 출력 `w_down`) 더하니 24층이면 48번이다. 독립적인 값을 더하면 분산이 쌓이므로 이 두 투영의 표준편차를 $1/\sqrt{2L}$만큼 줄여 합의 분산을 층 수와 무관하게 맞췄다.
 
 ## 4. KV 캐시: 조용히 틀리느니 죽는다
+
+{% include embed/video.html src='/assets/img/posts/sangyong-llm/explainer.mp4' poster='/assets/img/posts/sangyong-llm/explainer-poster.jpg' title='캐시가 있는 상태에서 질의 여러 개를 넣으면 is_causal=True가 마스크를 왼쪽 위로 정렬해 에러 없이 틀린 값을 낸다. 그래서 이 경로를 막았다' loop=true %}
 
 생성은 프롬프트 전체를 한 번에 넣어 캐시를 채우는 **프리필**과, 그 뒤 한 토큰씩 넣는 **디코드** 두 단계로 나뉜다.
 
