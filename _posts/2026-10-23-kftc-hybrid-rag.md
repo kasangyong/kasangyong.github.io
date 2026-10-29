@@ -5,8 +5,8 @@ categories: [AI, RAG]
 tags: [rag, bm25, bge-m3, rrf, reranker, exaone, lora, kiwipiepy, qdrant, fastapi]
 math: true
 image:
-  path: /assets/img/posts/kftc-hybrid-rag/retrieval-ablation-light.png
-  alt: 단독 검색과 하이브리드의 Recall@5 비교
+  path: /assets/img/posts/kftc-hybrid-rag/thumb-poster.jpg
+  alt: 공정위 의결서 더미에서 근거 문단을 찾아 원문의 사실로 답을 조립하는 검색 시스템 소개 애니메이션
 ---
 
 공정거래위원회 의결서 500건에서 근거 청크 5개를 찾아 답변과 함께 돌려주는 RAG 시스템을 만들었다. 제2회 공정위 AI·데이터 활용 공모전에 팀 Retriever로 출전했고, 본선에 진출해 최종 1~3위로 수상했다.
@@ -21,7 +21,7 @@ image:
 | 자체 생성 (정답 청크 제공) | mBERT 0.786 → 0.861 |
 | 응답 시간 | LLM 생성 41.9초 → 결정적 생성 1.4초 |
 
-{% include embed/video.html src='/assets/img/posts/kftc-hybrid-rag/explainer.mp4' poster='/assets/img/posts/kftc-hybrid-rag/explainer-poster.jpg' title='제목이 맞지 않는 질문 하나가 BM25·BGE-M3 병렬 검색, RRF 융합, 리랭커를 거쳐 근거 청크 5개와 결정적 답변이 되는 경로' loop=true %}
+{% include embed/video.html src='/assets/img/posts/kftc-hybrid-rag/intro.mp4' poster='/assets/img/posts/kftc-hybrid-rag/intro-poster.jpg' title='공정위 의결서 AI 검색 소개: 근거 문단을 찾아 원문의 사실로 답을 조립한다' %}
 
 ## 1. 문제와 제약
 
@@ -140,6 +140,8 @@ def keep_chunk(text: str, section: str = "") -> bool:
 이 정제·필터는 색인 스크립트, API 서버 기동, 평가 스크립트에 똑같이 적용한다. BM25 캐시와 Qdrant 색인은 미리 만들어 이미지에 넣고, 서버는 기동할 때 청크를 다시 정제해 `id_to_chunk`·앵커·답변 생성에 쓴다. 정제 규칙이 어긋나면 색인된 텍스트와 서버가 아는 청크가 달라진다.
 
 ## 3. 하이브리드 검색
+
+{% include embed/video.html src='/assets/img/posts/kftc-hybrid-rag/explainer.mp4' poster='/assets/img/posts/kftc-hybrid-rag/explainer-poster.jpg' title='제목이 맞지 않는 질문 하나가 BM25·BGE-M3 병렬 검색, RRF 융합, 리랭커를 거쳐 근거 청크 5개와 결정적 답변이 되는 경로' loop=true %}
 
 ### 희소: 형태소 BM25
 
