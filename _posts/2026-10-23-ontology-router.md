@@ -5,8 +5,8 @@ categories: [AI, RAG]
 tags: [knowledge-graph, ontology, neo4j, graphrag, rag, evaluation, mcnemar, permutation-test]
 math: true
 image:
-  path: /assets/img/posts/ontology-router/ui-doc-overview.png
-  alt: 문서 코퍼스 지식그래프 탐색기
+  path: /assets/img/posts/ontology-router/thumb-poster.jpg
+  alt: 문서 조각 위로 개념 지도가 떠오르고 질문마다 다른 길로 검색이 갈라지는 온톨로지 라우터 소개 애니메이션
 ---
 
 온톨로지·지식그래프 학습 문서 9편을 코퍼스로 삼아 Neo4j 지식그래프를 만들었다. 그 위에 검색 전략 6개, 질문 유형을 보고 전략을 고르는 규칙 라우터, 둘을 비교하는 평가 하네스를 직접 짰다. 여러 문서를 거쳐야 답이 나오는 질문에서 그래프가 벡터 검색보다 나은지 알고 싶었다.
@@ -22,7 +22,7 @@ image:
 | 라우터 분류 정확도 | held-out 합산 32/39 (82.1%) |
 | 전략 비교에 필요한 문항 수 | 60~120 (채점 문항은 19개) |
 
-{% include embed/video.html src='/assets/img/posts/ontology-router/explainer.mp4' poster='/assets/img/posts/ontology-router/explainer-poster.jpg' title='W10 질문이 관계형으로 분류돼 local로 가고, 진입점 3개 절단 때문에 근거 청크가 후보에서 빠지는 과정' loop=true %}
+{% include embed/video.html src='/assets/img/posts/ontology-router/intro.mp4' poster='/assets/img/posts/ontology-router/intro-poster.jpg' title='온톨로지 라우터 소개: 질문을 읽고 길을 고르는 검색' %}
 
 ## 1. 구성
 
@@ -178,6 +178,8 @@ def local_search(session, question: str, k: int = TOP_K, hops: int = 2,
 k=5일 때 진입 청크는 3개다. 벡터 점수와 그래프 점수는 척도가 달라 점수 대신 순위만 쓰는 RRF로 합쳤다. 확장 청크 점수 $\sum \frac{1}{1+d}\log(1+c)$는 진입 엔티티와의 거리 $d$가 가까울수록, 언급 횟수 $c$가 많을수록 커진다.
 
 ## 4. 규칙 라우터
+
+{% include embed/video.html src='/assets/img/posts/ontology-router/explainer.mp4' poster='/assets/img/posts/ontology-router/explainer-poster.jpg' title='W10 질문이 관계형으로 분류돼 local로 가고, 진입점 3개 절단 때문에 근거 청크가 후보에서 빠지는 과정' loop=true %}
 
 v1 집계형 문항에서는 `local`(0.250)이 `vector`(0.500)에 졌다. "몇 개인가"는 애초에 Cypher `count()`로 풀어야 하는 문제였다. 골든셋 14문항을 손으로 쓴 Cypher로 재현해 보면(`check_graph.py`) 14/14이고, 여기에는 집계형 4문항도 들어 있다. 그래서 질문 유형에 따라 도구를 바꾸는 라우터를 만들었다. LangGraph 조건부 엣지가 하는 일을 정규식 규칙으로 대신하는 셈이다.
 
