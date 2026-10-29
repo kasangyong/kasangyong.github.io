@@ -5,8 +5,8 @@ categories: [Graphics, Pixel Art]
 tags: [pixel-art, python, pillow, linter, javascript, canvas, game-dev]
 math: true
 image:
-  path: /assets/img/posts/pixel-art-pipeline/game.png
-  alt: 텍스트 격자 스프라이트로 만든 아레나 서바이벌 게임 화면
+  path: /assets/img/posts/pixel-art-pipeline/thumb-poster.jpg
+  alt: 글자 격자로 적은 스프라이트가 검사를 거쳐 픽셀 그림이 되고 게임에 실리는 픽셀아트 파이프라인 소개 애니메이션
 ---
 
 한 글자가 한 픽셀인 텍스트 격자(`.pixa`)로 스프라이트를 쓰고, Pillow로 빌드하면서 기계가 판정할 수 있는 도트 규칙은 린터로 검사하는 파이프라인을 만들었다. 이렇게 만든 에셋은 PNG로 굽지 않고 그대로 실어서 브라우저 게임에도 썼다.
@@ -20,7 +20,7 @@ image:
 | 린트 규칙 | 포맷·gutter ERROR + 도트 품질 WARN 8종 |
 | 회귀 테스트 | `test_pix.py` 전부 통과. 데모 스모크 18건, 게임 스모크 107건 × 2(연출 켬/끔), 렌더 민감도 6/6 |
 
-{% include embed/video.html src='/assets/img/posts/pixel-art-pipeline/explainer.mp4' poster='/assets/img/posts/pixel-art-pipeline/explainer-poster.jpg' title='.pixa 스프라이트 하나가 파서와 린터를 통과하고 빌드 리포트를 거쳐 PNG로 굽지 않은 채 게임 캔버스에 실리는 과정' loop=true %}
+{% include embed/video.html src='/assets/img/posts/pixel-art-pipeline/intro.mp4' poster='/assets/img/posts/pixel-art-pipeline/intro-poster.jpg' title='픽셀아트 파이프라인 소개: 한 글자가 한 픽셀이 되기까지' %}
 
 ## 1. 왜 텍스트 격자인가
 
@@ -113,6 +113,8 @@ frame.linenos.append(lineno)
 팔레트는 스프라이트마다 `.hex` 파일 하나를 둔다. 한 줄에 6자리 hex를 하나씩 쓰고 주석은 `#`으로 단다. 아웃라인 색 집합도 팔레트 안에서 `# @outline 0 1 7` 한 줄로 선언한다(4.3절).
 
 ## 3. 렌더러와 리포트
+
+{% include embed/video.html src='/assets/img/posts/pixel-art-pipeline/explainer.mp4' poster='/assets/img/posts/pixel-art-pipeline/explainer-poster.jpg' title='.pixa 스프라이트 하나가 파서와 린터를 통과하고 빌드 리포트를 거쳐 PNG로 굽지 않은 채 게임 캔버스에 실리는 과정' loop=true %}
 
 렌더러는 짧다. 인덱스를 팔레트 색으로 바꿔 찍고 확대는 nearest-neighbor 정수배로만 한다.
 
