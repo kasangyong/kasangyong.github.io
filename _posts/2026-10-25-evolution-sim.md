@@ -5,8 +5,8 @@ categories: [Simulation, Artificial Life]
 tags: [taichi, cuda, gpu, artificial-life, evolution, python, ctrnn, resistive-force-theory]
 math: true
 image:
-  path: /assets/img/posts/evolution-sim/viewer.png
-  alt: 실시간 뷰어. 바다 단면, 시간 막대, 생물·대기 통계, 사건 기록
+  path: /assets/img/posts/evolution-sim/thumb-poster.jpg
+  alt: 손대지 않은 바다에서 세포가 퍼지고 광합성과 산소, 눈덩이 지구를 거쳐 다세포 몸까지 나오는 진화 시뮬레이션 소개 애니메이션
 ---
 
 지구를 닮은 2D 바다를 Taichi CUDA로 만들고 심해 열수구 옆에 수소를 먹는 세포 200개를 놓은 뒤 손대지 않고 지켜보는 인공생명 시뮬레이션을 짰다. 세포는 실제 화학 반응의 ΔG로만 에너지를 얻고 적합도 함수는 어디에도 없다.
@@ -25,7 +25,7 @@ image:
 ![실시간 뷰어](/assets/img/posts/evolution-sim/viewer.png)
 _seed 3, tick 425,400. 왼쪽이 대륙붕, 가운데 해산 꼭대기와 해저의 주황 점이 열수구다_
 
-{% include embed/video.html src='/assets/img/posts/evolution-sim/explainer.mp4' poster='/assets/img/posts/evolution-sim/explainer-poster.jpg' title='ΔG로 번 에너지에서 유지비를 내고, 모자라면 죽고 남으면 분열하는 규칙만으로 수소 화학합성 효율이 0.5에서 0.941~0.943으로 올라간 과정. 세포 그림과 분포 이동은 예시' loop=true %}
+{% include embed/video.html src='/assets/img/posts/evolution-sim/intro.mp4' poster='/assets/img/posts/evolution-sim/intro-poster.jpg' title='진화 시뮬레이션 소개: 손대지 않은 바다에서 각본 없이 일어난 일들' %}
 
 ## 1. 세계: 격자 위의 장, 그 위의 입자
 
@@ -256,6 +256,8 @@ f64로 바꾼 뒤에도 오차는 0이 아니고 시간에 따라 는다. 늘어
 평균값은 끝 오차를 tick 수로 나눈 값이다. 평균으로 비교하면 결빙 상태로 멈춘 seed 7 뷰어(6e-16)보다 seed 3 뷰어 두 실행(2.5e-14, 1.6e-14)이 수십 배 빨리 늘었다. 구간별 기울기는 따로 재지 않았다. 가장 큰 3.7e-7도 기준(1e-3)과는 세 자릿수 넘게 떨어져 있다.
 
 ## 4. 적합도 함수 없이 선택이 일어나게 하기
+
+{% include embed/video.html src='/assets/img/posts/evolution-sim/explainer.mp4' poster='/assets/img/posts/evolution-sim/explainer-poster.jpg' title='ΔG로 번 에너지에서 유지비를 내고, 모자라면 죽고 남으면 분열하는 규칙만으로 수소 화학합성 효율이 0.5에서 0.941~0.943으로 올라간 과정. 세포 그림과 분포 이동은 예시' loop=true %}
 
 점수를 매기는 함수가 없으니 선택은 "에너지가 모자라면 죽고, 충분하면 분열한다"는 것 하나로 일어나야 한다. 그러려면 능력에 비용이 붙어야 한다. 효율 유전자마다 유지비가 붙어 있어서 모든 대사를 가진 만능 세포는 쓰지도 않는 효소 값을 매 tick 낸다.
 
