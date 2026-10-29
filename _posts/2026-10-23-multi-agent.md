@@ -4,8 +4,8 @@ date: 2026-10-23 11:20:00 +0900
 categories: [AI, Agent]
 tags: [multi-agent, gemini, llm, prompt-engineering, python, nodejs, esbuild]
 image:
-  path: /assets/img/posts/multi-agent/pipeline-light.png
-  alt: 6개 에이전트가 3라운드를 도는 파이프라인 구조도
+  path: /assets/img/posts/multi-agent/thumb-poster.jpg
+  alt: 에이전트 여섯이 원탁을 돌며 코드를 쌓고 컴파일러가 판정하는 멀티 에이전트 소개 애니메이션
 ---
 
 과제 한 줄을 넣으면 Gemini 기반 에이전트 6개가 순서대로 세 라운드를 돌며 프로젝트 파일을 만들고, 2라운드가 끝난 시점에 실제 도구로 문법과 의존성을 검사해 그 에러를 3라운드에 넘기는 파이썬 시스템을 만들었다.
@@ -20,7 +20,7 @@ image:
 | Round 1 응답 시간 | 193.3초 (실행 예시 1회) |
 | 코드 | 파이썬 402줄, 외부 의존성 `google-genai` 1개 |
 
-{% include embed/video.html src='/assets/img/posts/multi-agent/explainer.mp4' poster='/assets/img/posts/multi-agent/explainer-poster.jpg' title='과제 하나가 에이전트 6개를 거쳐 공유 메모리에 쌓이고, 빌드 검증 에러가 Round 3로 넘어간 뒤 파일로 기록되는 흐름' loop=true %}
+{% include embed/video.html src='/assets/img/posts/multi-agent/intro.mp4' poster='/assets/img/posts/multi-agent/intro-poster.jpg' title='멀티 에이전트 소개: 과제 한 줄에서 프로젝트 파일까지' %}
 
 ## 1. 구조: 역할 6개, 파일을 쓰는 건 3개
 
@@ -116,6 +116,8 @@ def _truncate(self, output):
 앞 2,000자와 뒤 2,000자를 남기는데, `FILE:` 마커가 몰리는 앞부분과 결론부를 둘 다 살리려는 의도였다. 구분 문자열 12자가 붙어서 잘린 결과는 4,012자가 된다. 자르는 건 컨텍스트를 만들 때뿐이고 `data` 원본은 그대로 두므로 파일 생성과 `final_result.md`에는 영향이 없다. 18건 × 4,000자로 계산하면 본문 상한은 72,000자다.
 
 ## 3. 라운드 진행
+
+{% include embed/video.html src='/assets/img/posts/multi-agent/explainer.mp4' poster='/assets/img/posts/multi-agent/explainer-poster.jpg' title='과제 하나가 에이전트 6개를 거쳐 공유 메모리에 쌓이고, 빌드 검증 에러가 Round 3로 넘어간 뒤 파일로 기록되는 흐름' loop=true %}
 
 ```python
 def run(self, task):
