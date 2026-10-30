@@ -5,8 +5,8 @@ categories: [Web, Graphics]
 tags: [webgl2, glsl, threejs, mediapipe, web-audio, typescript, intersectionobserver]
 math: true
 image:
-  path: /assets/img/posts/interactive-media/hero.jpg
-  alt: INTERACTIVE MEDIA 첫 화면의 이리데슨트 구체와 타이포그래피
+  path: /assets/img/posts/interactive-media/thumb-poster.jpg
+  alt: 비스듬히 누운 인터랙티브 미디어 페이지 위로 화면 틀이 오르내리고, 틀 안 데모만 움직이는 모습
 ---
 
 포인터, 스크롤, 소리, 카메라와 센서를 입력으로 받는 웹 인터랙션 기법 17가지를 스크롤 한 페이지에 데모로 모았다. 각 데모는 페이지 안에서 바로 돌다가 화면 밖으로 나가면 알아서 멈춘다.
@@ -23,9 +23,11 @@ image:
 | 스택 | TypeScript strict, Three.js r186, WebGL2, Web Audio, Vite 8 |
 | 코드 / 테스트 | `src` TypeScript 5,167줄, Vitest 20개, Playwright 스모크 3개 × 데스크톱·모바일 |
 
-{% include embed/video.html src='/assets/img/posts/interactive-media/explainer.mp4' poster='/assets/img/posts/interactive-media/explainer-poster.jpg' title='스크롤로 near 범위에 들어온 데모가 시작되고, 포인터 입력이 한 프레임의 패스를 지나 소용돌이가 되며, 멀어지면 pause와 unmount로 자원을 돌려주는 생명주기' loop=true %}
+{% include embed/video.html src='/assets/img/posts/interactive-media/intro.mp4' poster='/assets/img/posts/interactive-media/intro-poster.jpg' title='인터랙티브 미디어 소개: 커서가 유체를 휘젓고 스크롤이 3D 카메라를 밀고, 화면 밖으로 나간 데모는 멈추는 한 페이지' %}
 
 ## 1. 데모 17개가 한 페이지에서 버티는 구조
+
+{% include embed/video.html src='/assets/img/posts/interactive-media/explainer.mp4' poster='/assets/img/posts/interactive-media/explainer-poster.jpg' title='스크롤로 near 범위에 들어온 데모가 시작되고, 포인터 입력이 한 프레임의 패스를 지나 소용돌이가 되며, 멀어지면 pause와 unmount로 자원을 돌려주는 생명주기' loop=true %}
 
 데모가 한꺼번에 돌면 GPU가 버티지 못한다. 브라우저는 WebGL 컨텍스트 수에 상한을 두고, 카메라·마이크·소리는 사용자 동작이 있어야 시작할 수 있다. 이걸 데모마다 따로 처리하는 대신 모든 데모가 메서드 세 개짜리 계약을 따르게 하고, 생명주기는 `DemoHost` 하나에 맡겼다.
 
