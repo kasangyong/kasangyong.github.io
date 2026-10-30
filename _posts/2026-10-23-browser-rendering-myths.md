@@ -4,8 +4,8 @@ date: 2026-10-23 10:20:00 +0900
 categories: [Web, Performance]
 tags: [chrome, cdp, tracing, rendering, compositor, content-visibility, lcp]
 image:
-  path: /assets/img/posts/browser-rendering-myths/a1-stage-skip.png
-  alt: left와 transform의 단계별 트레이스 이벤트 횟수
+  path: /assets/img/posts/browser-rendering-myths/thumb-poster.jpg
+  alt: 통념 카드가 채점대를 지나며 맞다, 틀렸다, 조건부 도장을 받는 장면
 ---
 
 Chrome DevTools Protocol(CDP)로 트레이스를 떠서 렌더링 성능에 관한 통념 27개를 실측과 나란히 놓았다. 측정 전에 예측을 파일로 등록하고 나중에 채점했다.
@@ -20,7 +20,7 @@ Chrome DevTools Protocol(CDP)로 트레이스를 떠서 렌더링 성능에 관�
 | 환경 | Chrome 152.0.7977.83 (headless=new, GPU 가속), Windows 11 |
 | 의존성 | Node 22 내장 `WebSocket`만 사용, 0개 |
 
-{% include embed/video.html src='/assets/img/posts/browser-rendering-myths/explainer.mp4' poster='/assets/img/posts/browser-rendering-myths/explainer-poster.jpg' title='transform 애니메이션의 프레임 하나가 Layout과 Paint만 건너뛰고 Style, PrePaint, Commit은 매번 지나는 과정' loop=true %}
+{% include embed/video.html src='/assets/img/posts/browser-rendering-myths/intro.mp4' poster='/assets/img/posts/browser-rendering-myths/intro-poster.jpg' title='브라우저 렌더링 통념 소개: 측정 전에 예측을 봉해 두고, 직접 재서 맞다·틀렸다·조건부로 가려내는 과정' %}
 
 ## 1. 프레임 시간 대신 이벤트를 세는 측정 장치
 
@@ -100,6 +100,8 @@ function summarize(events, elapsedMs) {
 - 조건 순서를 섞는다. 고정 순서로 돌렸을 때 세션 드리프트가 조건 차이로 보인 적이 있다(5장).
 
 ## 2. "transform은 메인 스레드를 안 쓴다": 틀렸다
+
+{% include embed/video.html src='/assets/img/posts/browser-rendering-myths/explainer.mp4' poster='/assets/img/posts/browser-rendering-myths/explainer-poster.jpg' title='transform 애니메이션의 프레임 하나가 Layout과 Paint만 건너뛰고 Style, PrePaint, Commit은 매번 지나는 과정' loop=true %}
 
 ![A1 단계별 이벤트 횟수](/assets/img/posts/browser-rendering-myths/a1-stage-skip.png)
 _박스 5개, 모드당 4초. 세 모드가 정확히 같은 482프레임을 냈다_
