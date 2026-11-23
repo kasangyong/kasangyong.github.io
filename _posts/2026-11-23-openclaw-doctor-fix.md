@@ -3,6 +3,9 @@ title: "OpenClaw 기여기: 이전 PR이 놓친 인자 하나"
 date: 2026-11-23 10:00:00 +0900
 categories: [Open Source, TypeScript]
 tags: [openclaw, open-source, typescript, vitest, regression-test, bug-fix]
+image:
+  path: /assets/img/posts/openclaw-doctor-fix/thumb-poster.jpg
+  alt: 세 가지 설정이 서로 다른 점검 결과를 내는 OpenClaw 기여기 소개 애니메이션
 ---
 
 GitHub 스타 39만 개가 넘는 오픈소스 에이전트 OpenClaw에 버그 수정 PR(#84424)을 냈고, 2026년 7월 8일에 머지됐다. 버그 탐색부터 수정, 테스트, PR 작성까지 Claude Code로 진행했다.
@@ -19,6 +22,8 @@ GitHub 스타 39만 개가 넘는 오픈소스 에이전트 OpenClaw에 버그 �
 | 검증 | 수정 전후 출력 비교 3개 시나리오, 수정 전 코드에서 실패하는 회귀 테스트 |
 | 도구 | Claude Code (탐색, 수정, 테스트, PR 작성). PR 본문 첫 줄에 AI 사용을 밝혔다 |
 | 검증 환경 | Windows 11 + Node 24 (PR), Linux (메인테이너) |
+
+{% include embed/video.html src='/assets/img/posts/openclaw-doctor-fix/intro.mp4' poster='/assets/img/posts/openclaw-doctor-fix/intro-poster.jpg' title='OpenClaw 기여기 소개: 버그를 찾아 고치고 머지되기까지' %}
 
 ## 1. bootstrap 파일과 글자 수 예산
 
