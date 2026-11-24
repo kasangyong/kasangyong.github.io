@@ -1,6 +1,6 @@
 ---
 title: "다섯 단계로 쌓은 AP 92.8%: YOLO 사출 불량 검출 캡스톤"
-date: 2026-11-24 10:00:00 +0900
+date: 2026-11-24 09:00:00 +0900
 categories: [AI, Computer Vision]
 tags: [yolo, yolov4, object-detection, opencv, data-augmentation, labeling, smart-factory, quality-inspection]
 image:
