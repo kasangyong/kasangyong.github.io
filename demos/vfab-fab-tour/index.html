@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VFAB 팹 투어 · 시뮬레이션 재생</title>
+    <link rel="icon" href="data:,">
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #1d2127; color: #e8ebef;
+        font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+      #unity-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; background: #9ea8b8; outline: none; }
+      #cover { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #1d2127; }
+      #cover .box { width: min(520px, calc(100vw - 32px)); line-height: 1.6; }
+      #cover h1 { font-size: 22px; margin: 0 0 6px; font-weight: 600; }
+      #cover p { margin: 6px 0; font-size: 14px; color: #b9c0ca; }
+      #bar { height: 6px; background: #343a44; border-radius: 3px; overflow: hidden; margin: 16px 0 8px; }
+      #fill { height: 100%; width: 0; background: #4fb286; transition: width 0.2s; }
+      #state { font-size: 14px; }
+      #go { display: none; margin-top: 14px; padding: 8px 16px; font-size: 15px; border: 1px solid #4fb286; background: transparent; color: #e8ebef; border-radius: 4px; cursor: pointer; }
+      #error { display: none; color: #ff9b8f; }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div id="cover">
+      <div class="box">
+        <h1>VFAB 팹 투어</h1>
+        <p>SMT2020 팹 모델을 직접 짠 시뮬레이터로 돌린 결과를 3D 팹과 관제 화면으로 재생합니다. 모든 값은 시뮬레이션 결과이고 실측이 아닙니다.</p>
+        <p>PC의 키보드와 마우스용입니다. 끌기 회전, 휠 확대, 숫자 키 1 전경, 2~0·-·= 대표 장비. 글자 키(WASD, F, T, L)가 안 먹으면 한/영 키로 영문 입력으로 바꾸세요.</p>
+        <div id="bar"><div id="fill"></div></div>
+        <div id="state">준비 중</div>
+        <p id="error"></p>
+        <button id="go" type="button">그래도 실행</button>
+      </div>
+    </div>
+    <script src="Build/257c5955ffe486d53c4e7f9869add39b.loader.js"></script>
+    <script>
+      (function () {
+        var query = window.location.search.slice(1).split("&");
+        var canvas = document.getElementById("unity-canvas");
+        var state = document.getElementById("state");
+        var fill = document.getElementById("fill");
+        var config = {
+          arguments: [],
+          dataUrl: "Build/78127b70711a440e2afdd296f43ae495.data.unityweb",
+          frameworkUrl: "Build/bcdd38e3e2cbf3e87a5754178c95d40a.framework.js.unityweb",
+          codeUrl: "Build/92131ce1e5baffdfb271f525605ea3cf.wasm.unityweb",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "VfabFabTour",
+          productVersion: "1.0"
+        };
+        // Task 62: render at most 1.5 device pixels per CSS pixel. On a DPR 2 laptop the full ratio
+        // ran the heavy scenes up to 1.7x slower than 1.5 (never clearly faster) (interleaved A/B); ?dpr=2 restores it.
+        config.devicePixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+        // measurement switches: ?dpr=1 fixes the pixel ratio, ?lowpower asks for the low-power GPU
+        query.forEach(function (q) {
+          if (q.indexOf("dpr=") === 0) config.devicePixelRatio = parseFloat(q.slice(4));
+          if (q === "lowpower") config.webglContextAttributes = { powerPreference: "low-power" };
+        });
+        window.vfab = { started: 0, loaded: 0, instance: null };
+        function heap() {
+          var m = window.vfab.instance && window.vfab.instance.Module;
+          return m && m.HEAPU8 ? m.HEAPU8.length : 0;
+        }
+        window.vfab.heap = heap;
+        function start() {
+          document.getElementById("go").style.display = "none";
+          window.vfab.started = performance.now();
+          state.textContent = "팹 데이터 받는 중 0%";
+          createUnityInstance(canvas, config, function (p) {
+            fill.style.width = Math.round(p * 100) + "%";
+            state.textContent = p < 1 ? "팹 데이터 받는 중 " + Math.round(p * 100) + "%" : "여는 중";
+          }).then(function (instance) {
+            window.vfab.instance = instance;
+            window.vfab.loaded = performance.now();
+            document.getElementById("cover").style.display = "none";
+            canvas.focus();
+          }).catch(function (message) {
+            var e = document.getElementById("error");
+            e.textContent = "실행하지 못했습니다: " + message;
+            e.style.display = "block";
+            state.textContent = "";
+          });
+        }
+        var touch = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && !window.matchMedia("(pointer: fine)").matches);
+        if (touch) {
+          state.textContent = "휴대폰·태블릿에서는 조작이 어렵고 메모리를 많이 써서 브라우저가 닫힐 수 있습니다.";
+          document.getElementById("go").style.display = "inline-block";
+          document.getElementById("go").onclick = start;
+        } else {
+          start();
+        }
+        canvas.addEventListener("mousedown", function () { canvas.focus(); });
+      })();
+    </script>
+  </body>
+</html>
