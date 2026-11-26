@@ -33,7 +33,7 @@
         <button id="go" type="button">그래도 실행</button>
       </div>
     </div>
-    <script src="Build/257c5955ffe486d53c4e7f9869add39b.loader.js"></script>
+    <script src="Build/6868ff9cdd6899e54093605b14174708.loader.js"></script>
     <script>
       (function () {
         var query = window.location.search.slice(1).split("&");
@@ -42,17 +42,17 @@
         var fill = document.getElementById("fill");
         var config = {
           arguments: [],
-          dataUrl: "Build/78127b70711a440e2afdd296f43ae495.data.unityweb",
-          frameworkUrl: "Build/bcdd38e3e2cbf3e87a5754178c95d40a.framework.js.unityweb",
-          codeUrl: "Build/92131ce1e5baffdfb271f525605ea3cf.wasm.unityweb",
+          dataUrl: "Build/9cce922bfb9d02e249bf97a148375e66.data.unityweb",
+          frameworkUrl: "Build/e57f49eec0c9049cf426b35e24a91469.framework.js.unityweb",
+          codeUrl: "Build/52c9fb63ac81ac3512b33ddda8dec3b6.wasm.unityweb",
           streamingAssetsUrl: "StreamingAssets",
           companyName: "DefaultCompany",
           productName: "VfabFabTour",
           productVersion: "1.0"
         };
-        // Task 62: render at most 1.5 device pixels per CSS pixel. On a DPR 2 laptop the full ratio
-        // ran the heavy scenes up to 1.7x slower than 1.5 (never clearly faster) (interleaved A/B); ?dpr=2 restores it.
-        config.devicePixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+        // Task 62: the screen's own pixel ratio, at most 2. A cap of 1.5 was up to 1.7x faster on a DPR 2 laptop
+        // but its text and edges looked soft once published (2026-11-26); ?dpr=1.5 brings the cap back.
+        config.devicePixelRatio = Math.min(window.devicePixelRatio || 1, 2);
         // measurement switches: ?dpr=1 fixes the pixel ratio, ?lowpower asks for the low-power GPU
         query.forEach(function (q) {
           if (q.indexOf("dpr=") === 0) config.devicePixelRatio = parseFloat(q.slice(4));
