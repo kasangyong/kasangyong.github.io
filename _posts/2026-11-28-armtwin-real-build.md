@@ -23,7 +23,7 @@ image:
 | 안전 | 하드웨어 워치독(Raspberry Pi Pico 계획), 정지 등급 1, 울타리 운전 |
 | 검증 | 가상 CAN/시리얼 버스 위 에뮬레이터, 고장 주입, 단계별 냉정한 평가 |
 
-{% include embed/video.html src='/assets/img/posts/armtwin/intro.mp4' poster='/assets/img/posts/armtwin/intro-poster.jpg' title='armtwin 소개: 사람이 팔을 들면 로봇팔이 따라 들고, 청사진 위에서 로봇이 조립되고, 컴퓨터가 멈추자 작은 보드가 팔을 받침대로 내려놓는다' %}
+{% include embed/video.html src='/assets/img/posts/armtwin/intro.mp4' poster='/assets/img/posts/armtwin/intro-poster.jpg' title='armtwin 소개: 팔을 든 채 컴퓨터가 멈추는 순간에서 시작해, 웹캠 따라 하기, 예전 모델의 병 집기, 손가락, 조립, 가상 배선을 거쳐 같은 순간 작은 보드가 팔을 받침대로 내려놓는다' %}
 
 ## 1. 전체 흐름
 
